@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.props" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AECFD55A-8FFD-4368-8198-5C53087A1CDB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EmguCVTest</RootNamespace>
+    <AssemblyName>EmguCVTest</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls, Version=2.2.5.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.2.5.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging.Formats, Version=2.2.4.0, Culture=neutral, PublicKeyToken=8065ed5a639199a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Imaging.Formats.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math, Version=2.2.5.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI.GL, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.World.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.1.1.2225.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.1.1.2225.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmguCVTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmguCVTest.Designer.cs">
+      <DependentUpon>EmguCVTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\FaceTrackUnit.cs" />
+    <Compile Include="Entity\ImageInfo.cs" />
+    <Compile Include="faceapi\API.cs" />
+    <Compile Include="faceapi\Items.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SDKModels\ASF_AgeInfo.cs" />
+    <Compile Include="SDKModels\ASF_Face3DAngle.cs" />
+    <Compile Include="SDKModels\ASF_FaceFeature.cs" />
+    <Compile Include="SDKModels\ASF_GenderInfo.cs" />
+    <Compile Include="SDKModels\ASF_ImagePixelFormat.cs" />
+    <Compile Include="SDKModels\ASF_LivenessInfo.cs" />
+    <Compile Include="SDKModels\ASF_MultiFaceInfo.cs" />
+    <Compile Include="SDKModels\ASF_OrientCode.cs" />
+    <Compile Include="SDKModels\ASF_OrientPriority.cs" />
+    <Compile Include="SDKModels\ASF_SingleFaceInfo.cs" />
+    <Compile Include="SDKModels\ASF_VERSION.cs" />
+    <Compile Include="SDKModels\DetectionMode.cs" />
+    <Compile Include="SDKModels\FaceEngineMask.cs" />
+    <Compile Include="SDKModels\MRECT.cs" />
+    <Compile Include="SDKUtil\ASFFunctions.cs" />
+    <Compile Include="Utils\FaceUtil.cs" />
+    <Compile Include="Utils\ImageUtil.cs" />
+    <Compile Include="Utils\MemoryUtil.cs" />
+    <EmbeddedResource Include="EmguCVTest.resx">
+      <DependentUpon>EmguCVTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Data\1.dat" />
+    <None Include="Data\10.dat" />
+    <None Include="Data\100.dat" />
+    <None Include="Data\101.dat" />
+    <None Include="Data\102.dat" />
+    <None Include="Data\103.dat" />
+    <None Include="Data\104.dat" />
+    <None Include="Data\105.dat" />
+    <None Include="Data\106.dat" />
+    <None Include="Data\107.dat" />
+    <None Include="Data\108.dat" />
+    <None Include="Data\109.dat" />
+    <None Include="Data\11.dat" />
+    <None Include="Data\110.dat" />
+    <None Include="Data\111.dat" />
+    <None Include="Data\112.dat" />
+    <None Include="Data\113.dat" />
+    <None Include="Data\114.dat" />
+    <None Include="Data\115.dat" />
+    <None Include="Data\116.dat" />
+    <None Include="Data\117.dat" />
+    <None Include="Data\118.dat" />
+    <None Include="Data\119.dat" />
+    <None Include="Data\12.dat" />
+    <None Include="Data\120.dat" />
+    <None Include="Data\121.dat" />
+    <None Include="Data\122.dat" />
+    <None Include="Data\123.dat" />
+    <None Include="Data\124.dat" />
+    <None Include="Data\125.dat" />
+    <None Include="Data\126.dat" />
+    <None Include="Data\127.dat" />
+    <None Include="Data\128.dat" />
+    <None Include="Data\129.dat" />
+    <None Include="Data\13.dat" />
+    <None Include="Data\130.dat" />
+    <None Include="Data\131.dat" />
+    <None Include="Data\132.dat" />
+    <None Include="Data\133.dat" />
+    <None Include="Data\134.dat" />
+    <None Include="Data\135.dat" />
+    <None Include="Data\136.dat" />
+    <None Include="Data\137.dat" />
+    <None Include="Data\138.dat" />
+    <None Include="Data\139.dat" />
+    <None Include="Data\14.dat" />
+    <None Include="Data\140.dat" />
+    <None Include="Data\141.dat" />
+    <None Include="Data\142.dat" />
+    <None Include="Data\143.dat" />
+    <None Include="Data\144.dat" />
+    <None Include="Data\145.dat" />
+    <None Include="Data\146.dat" />
+    <None Include="Data\147.dat" />
+    <None Include="Data\148.dat" />
+    <None Include="Data\149.dat" />
+    <None Include="Data\15.dat" />
+    <None Include="Data\150.dat" />
+    <None Include="Data\151.dat" />
+    <None Include="Data\152.dat" />
+    <None Include="Data\153.dat" />
+    <None Include="Data\154.dat" />
+    <None Include="Data\155.dat" />
+    <None Include="Data\156.dat" />
+    <None Include="Data\157.dat" />
+    <None Include="Data\158.dat" />
+    <None Include="Data\159.dat" />
+    <None Include="Data\16.dat" />
+    <None Include="Data\160.dat" />
+    <None Include="Data\161.dat" />
+    <None Include="Data\162.dat" />
+    <None Include="Data\163.dat" />
+    <None Include="Data\164.dat" />
+    <None Include="Data\165.dat" />
+    <None Include="Data\166.dat" />
+    <None Include="Data\167.dat" />
+    <None Include="Data\168.dat" />
+    <None Include="Data\169.dat" />
+    <None Include="Data\17.dat" />
+    <None Include="Data\170.dat" />
+    <None Include="Data\171.dat" />
+    <None Include="Data\172.dat" />
+    <None Include="Data\173.dat" />
+    <None Include="Data\174.dat" />
+    <None Include="Data\175.dat" />
+    <None Include="Data\176.dat" />
+    <None Include="Data\177.dat" />
+    <None Include="Data\178.dat" />
+    <None Include="Data\179.dat" />
+    <None Include="Data\18.dat" />
+    <None Include="Data\180.dat" />
+    <None Include="Data\181.dat" />
+    <None Include="Data\182.dat" />
+    <None Include="Data\183.dat" />
+    <None Include="Data\184.dat" />
+    <None Include="Data\185.dat" />
+    <None Include="Data\186.dat" />
+    <None Include="Data\187.dat" />
+    <None Include="Data\188.dat" />
+    <None Include="Data\189.dat" />
+    <None Include="Data\19.dat" />
+    <None Include="Data\190.dat" />
+    <None Include="Data\191.dat" />
+    <None Include="Data\192.dat" />
+    <None Include="Data\193.dat" />
+    <None Include="Data\194.dat" />
+    <None Include="Data\195.dat" />
+    <None Include="Data\196.dat" />
+    <None Include="Data\197.dat" />
+    <None Include="Data\198.dat" />
+    <None Include="Data\199.dat" />
+    <None Include="Data\2.dat" />
+    <None Include="Data\20.dat" />
+    <None Include="Data\200.dat" />
+    <None Include="Data\201.dat" />
+    <None Include="Data\202.dat" />
+    <None Include="Data\203.dat" />
+    <None Include="Data\204.dat" />
+    <None Include="Data\205.dat" />
+    <None Include="Data\206.dat" />
+    <None Include="Data\207.dat" />
+    <None Include="Data\208.dat" />
+    <None Include="Data\209.dat" />
+    <None Include="Data\21.dat" />
+    <None Include="Data\210.dat" />
+    <None Include="Data\211.dat" />
+    <None Include="Data\212.dat" />
+    <None Include="Data\213.dat" />
+    <None Include="Data\214.dat" />
+    <None Include="Data\215.dat" />
+    <None Include="Data\216.dat" />
+    <None Include="Data\217.dat" />
+    <None Include="Data\218.dat" />
+    <None Include="Data\219.dat" />
+    <None Include="Data\22.dat" />
+    <None Include="Data\220.dat" />
+    <None Include="Data\221.dat" />
+    <None Include="Data\222.dat" />
+    <None Include="Data\223.dat" />
+    <None Include="Data\224.dat" />
+    <None Include="Data\225.dat" />
+    <None Include="Data\226.dat" />
+    <None Include="Data\227.dat" />
+    <None Include="Data\228.dat" />
+    <None Include="Data\229.dat" />
+    <None Include="Data\23.dat" />
+    <None Include="Data\230.dat" />
+    <None Include="Data\231.dat" />
+    <None Include="Data\232.dat" />
+    <None Include="Data\233.dat" />
+    <None Include="Data\234.dat" />
+    <None Include="Data\235.dat" />
+    <None Include="Data\236.dat" />
+    <None Include="Data\237.dat" />
+    <None Include="Data\238.dat" />
+    <None Include="Data\239.dat" />
+    <None Include="Data\24.dat" />
+    <None Include="Data\240.dat" />
+    <None Include="Data\241.dat" />
+    <None Include="Data\242.dat" />
+    <None Include="Data\243.dat" />
+    <None Include="Data\244.dat" />
+    <None Include="Data\245.dat" />
+    <None Include="Data\246.dat" />
+    <None Include="Data\247.dat" />
+    <None Include="Data\248.dat" />
+    <None Include="Data\249.dat" />
+    <None Include="Data\25.dat" />
+    <None Include="Data\250.dat" />
+    <None Include="Data\251.dat" />
+    <None Include="Data\252.dat" />
+    <None Include="Data\253.dat" />
+    <None Include="Data\254.dat" />
+    <None Include="Data\255.dat" />
+    <None Include="Data\256.dat" />
+    <None Include="Data\257.dat" />
+    <None Include="Data\258.dat" />
+    <None Include="Data\259.dat" />
+    <None Include="Data\26.dat" />
+    <None Include="Data\260.dat" />
+    <None Include="Data\261.dat" />
+    <None Include="Data\262.dat" />
+    <None Include="Data\263.dat" />
+    <None Include="Data\264.dat" />
+    <None Include="Data\265.dat" />
+    <None Include="Data\266.dat" />
+    <None Include="Data\267.dat" />
+    <None Include="Data\268.dat" />
+    <None Include="Data\269.dat" />
+    <None Include="Data\27.dat" />
+    <None Include="Data\270.dat" />
+    <None Include="Data\271.dat" />
+    <None Include="Data\272.dat" />
+    <None Include="Data\273.dat" />
+    <None Include="Data\274.dat" />
+    <None Include="Data\275.dat" />
+    <None Include="Data\276.dat" />
+    <None Include="Data\277.dat" />
+    <None Include="Data\278.dat" />
+    <None Include="Data\279.dat" />
+    <None Include="Data\28.dat" />
+    <None Include="Data\280.dat" />
+    <None Include="Data\281.dat" />
+    <None Include="Data\282.dat" />
+    <None Include="Data\283.dat" />
+    <None Include="Data\284.dat" />
+    <None Include="Data\285.dat" />
+    <None Include="Data\286.dat" />
+    <None Include="Data\287.dat" />
+    <None Include="Data\288.dat" />
+    <None Include="Data\289.dat" />
+    <None Include="Data\29.dat" />
+    <None Include="Data\290.dat" />
+    <None Include="Data\291.dat" />
+    <None Include="Data\292.dat" />
+    <None Include="Data\293.dat" />
+    <None Include="Data\294.dat" />
+    <None Include="Data\295.dat" />
+    <None Include="Data\296.dat" />
+    <None Include="Data\297.dat" />
+    <None Include="Data\298.dat" />
+    <None Include="Data\299.dat" />
+    <None Include="Data\3.dat" />
+    <None Include="Data\30.dat" />
+    <None Include="Data\300.dat" />
+    <None Include="Data\301.dat" />
+    <None Include="Data\302.dat" />
+    <None Include="Data\303.dat" />
+    <None Include="Data\304.dat" />
+    <None Include="Data\305.dat" />
+    <None Include="Data\306.dat" />
+    <None Include="Data\307.dat" />
+    <None Include="Data\308.dat" />
+    <None Include="Data\309.dat" />
+    <None Include="Data\31.dat" />
+    <None Include="Data\310.dat" />
+    <None Include="Data\311.dat" />
+    <None Include="Data\312.dat" />
+    <None Include="Data\313.dat" />
+    <None Include="Data\314.dat" />
+    <None Include="Data\315.dat" />
+    <None Include="Data\316.dat" />
+    <None Include="Data\317.dat" />
+    <None Include="Data\318.dat" />
+    <None Include="Data\319.dat" />
+    <None Include="Data\32.dat" />
+    <None Include="Data\320.dat" />
+    <None Include="Data\321.dat" />
+    <None Include="Data\322.dat" />
+    <None Include="Data\323.dat" />
+    <None Include="Data\324.dat" />
+    <None Include="Data\325.dat" />
+    <None Include="Data\326.dat" />
+    <None Include="Data\327.dat" />
+    <None Include="Data\328.dat" />
+    <None Include="Data\329.dat" />
+    <None Include="Data\33.dat" />
+    <None Include="Data\330.dat" />
+    <None Include="Data\331.dat" />
+    <None Include="Data\332.dat" />
+    <None Include="Data\333.dat" />
+    <None Include="Data\334.dat" />
+    <None Include="Data\335.dat" />
+    <None Include="Data\336.dat" />
+    <None Include="Data\337.dat" />
+    <None Include="Data\338.dat" />
+    <None Include="Data\339.dat" />
+    <None Include="Data\34.dat" />
+    <None Include="Data\340.dat" />
+    <None Include="Data\341.dat" />
+    <None Include="Data\342.dat" />
+    <None Include="Data\343.dat" />
+    <None Include="Data\344.dat" />
+    <None Include="Data\345.dat" />
+    <None Include="Data\346.dat" />
+    <None Include="Data\347.dat" />
+    <None Include="Data\348.dat" />
+    <None Include="Data\349.dat" />
+    <None Include="Data\35.dat" />
+    <None Include="Data\350.dat" />
+    <None Include="Data\351.dat" />
+    <None Include="Data\352.dat" />
+    <None Include="Data\353.dat" />
+    <None Include="Data\354.dat" />
+    <None Include="Data\355.dat" />
+    <None Include="Data\356.dat" />
+    <None Include="Data\357.dat" />
+    <None Include="Data\358.dat" />
+    <None Include="Data\359.dat" />
+    <None Include="Data\36.dat" />
+    <None Include="Data\360.dat" />
+    <None Include="Data\361.dat" />
+    <None Include="Data\362.dat" />
+    <None Include="Data\363.dat" />
+    <None Include="Data\364.dat" />
+    <None Include="Data\365.dat" />
+    <None Include="Data\366.dat" />
+    <None Include="Data\367.dat" />
+    <None Include="Data\368.dat" />
+    <None Include="Data\369.dat" />
+    <None Include="Data\37.dat" />
+    <None Include="Data\370.dat" />
+    <None Include="Data\371.dat" />
+    <None Include="Data\372.dat" />
+    <None Include="Data\373.dat" />
+    <None Include="Data\374.dat" />
+    <None Include="Data\375.dat" />
+    <None Include="Data\376.dat" />
+    <None Include="Data\377.dat" />
+    <None Include="Data\378.dat" />
+    <None Include="Data\379.dat" />
+    <None Include="Data\38.dat" />
+    <None Include="Data\380.dat" />
+    <None Include="Data\381.dat" />
+    <None Include="Data\382.dat" />
+    <None Include="Data\383.dat" />
+    <None Include="Data\384.dat" />
+    <None Include="Data\385.dat" />
+    <None Include="Data\386.dat" />
+    <None Include="Data\387.dat" />
+    <None Include="Data\388.dat" />
+    <None Include="Data\389.dat" />
+    <None Include="Data\39.dat" />
+    <None Include="Data\390.dat" />
+    <None Include="Data\391.dat" />
+    <None Include="Data\392.dat" />
+    <None Include="Data\393.dat" />
+    <None Include="Data\394.dat" />
+    <None Include="Data\395.dat" />
+    <None Include="Data\396.dat" />
+    <None Include="Data\397.dat" />
+    <None Include="Data\398.dat" />
+    <None Include="Data\399.dat" />
+    <None Include="Data\4.dat" />
+    <None Include="Data\40.dat" />
+    <None Include="Data\400.dat" />
+    <None Include="Data\401.dat" />
+    <None Include="Data\402.dat" />
+    <None Include="Data\403.dat" />
+    <None Include="Data\404.dat" />
+    <None Include="Data\405.dat" />
+    <None Include="Data\406.dat" />
+    <None Include="Data\407.dat" />
+    <None Include="Data\408.dat" />
+    <None Include="Data\409.dat" />
+    <None Include="Data\41.dat" />
+    <None Include="Data\410.dat" />
+    <None Include="Data\411.dat" />
+    <None Include="Data\412.dat" />
+    <None Include="Data\413.dat" />
+    <None Include="Data\414.dat" />
+    <None Include="Data\415.dat" />
+    <None Include="Data\416.dat" />
+    <None Include="Data\417.dat" />
+    <None Include="Data\418.dat" />
+    <None Include="Data\419.dat" />
+    <None Include="Data\42.dat" />
+    <None Include="Data\420.dat" />
+    <None Include="Data\421.dat" />
+    <None Include="Data\422.dat" />
+    <None Include="Data\423.dat" />
+    <None Include="Data\424.dat" />
+    <None Include="Data\425.dat" />
+    <None Include="Data\426.dat" />
+    <None Include="Data\427.dat" />
+    <None Include="Data\428.dat" />
+    <None Include="Data\429.dat" />
+    <None Include="Data\43.dat" />
+    <None Include="Data\430.dat" />
+    <None Include="Data\431.dat" />
+    <None Include="Data\432.dat" />
+    <None Include="Data\433.dat" />
+    <None Include="Data\434.dat" />
+    <None Include="Data\435.dat" />
+    <None Include="Data\436.dat" />
+    <None Include="Data\437.dat" />
+    <None Include="Data\438.dat" />
+    <None Include="Data\439.dat" />
+    <None Include="Data\44.dat" />
+    <None Include="Data\440.dat" />
+    <None Include="Data\441.dat" />
+    <None Include="Data\442.dat" />
+    <None Include="Data\443.dat" />
+    <None Include="Data\444.dat" />
+    <None Include="Data\445.dat" />
+    <None Include="Data\446.dat" />
+    <None Include="Data\447.dat" />
+    <None Include="Data\448.dat" />
+    <None Include="Data\449.dat" />
+    <None Include="Data\45.dat" />
+    <None Include="Data\450.dat" />
+    <None Include="Data\451.dat" />
+    <None Include="Data\452.dat" />
+    <None Include="Data\453.dat" />
+    <None Include="Data\454.dat" />
+    <None Include="Data\455.dat" />
+    <None Include="Data\456.dat" />
+    <None Include="Data\457.dat" />
+    <None Include="Data\458.dat" />
+    <None Include="Data\459.dat" />
+    <None Include="Data\46.dat" />
+    <None Include="Data\460.dat" />
+    <None Include="Data\461.dat" />
+    <None Include="Data\462.dat" />
+    <None Include="Data\463.dat" />
+    <None Include="Data\464.dat" />
+    <None Include="Data\465.dat" />
+    <None Include="Data\466.dat" />
+    <None Include="Data\467.dat" />
+    <None Include="Data\468.dat" />
+    <None Include="Data\469.dat" />
+    <None Include="Data\47.dat" />
+    <None Include="Data\470.dat" />
+    <None Include="Data\471.dat" />
+    <None Include="Data\472.dat" />
+    <None Include="Data\473.dat" />
+    <None Include="Data\474.dat" />
+    <None Include="Data\475.dat" />
+    <None Include="Data\476.dat" />
+    <None Include="Data\477.dat" />
+    <None Include="Data\478.dat" />
+    <None Include="Data\479.dat" />
+    <None Include="Data\48.dat" />
+    <None Include="Data\480.dat" />
+    <None Include="Data\481.dat" />
+    <None Include="Data\482.dat" />
+    <None Include="Data\483.dat" />
+    <None Include="Data\484.dat" />
+    <None Include="Data\485.dat" />
+    <None Include="Data\486.dat" />
+    <None Include="Data\487.dat" />
+    <None Include="Data\488.dat" />
+    <None Include="Data\489.dat" />
+    <None Include="Data\49.dat" />
+    <None Include="Data\490.dat" />
+    <None Include="Data\491.dat" />
+    <None Include="Data\492.dat" />
+    <None Include="Data\493.dat" />
+    <None Include="Data\494.dat" />
+    <None Include="Data\495.dat" />
+    <None Include="Data\496.dat" />
+    <None Include="Data\497.dat" />
+    <None Include="Data\498.dat" />
+    <None Include="Data\499.dat" />
+    <None Include="Data\5.dat" />
+    <None Include="Data\50.dat" />
+    <None Include="Data\500.dat" />
+    <None Include="Data\51.dat" />
+    <None Include="Data\52.dat" />
+    <None Include="Data\53.dat" />
+    <None Include="Data\54.dat" />
+    <None Include="Data\55.dat" />
+    <None Include="Data\56.dat" />
+    <None Include="Data\57.dat" />
+    <None Include="Data\58.dat" />
+    <None Include="Data\59.dat" />
+    <None Include="Data\6.dat" />
+    <None Include="Data\60.dat" />
+    <None Include="Data\61.dat" />
+    <None Include="Data\62.dat" />
+    <None Include="Data\63.dat" />
+    <None Include="Data\64.dat" />
+    <None Include="Data\65.dat" />
+    <None Include="Data\66.dat" />
+    <None Include="Data\67.dat" />
+    <None Include="Data\68.dat" />
+    <None Include="Data\69.dat" />
+    <None Include="Data\7.dat" />
+    <None Include="Data\70.dat" />
+    <None Include="Data\71.dat" />
+    <None Include="Data\72.dat" />
+    <None Include="Data\73.dat" />
+    <None Include="Data\74.dat" />
+    <None Include="Data\75.dat" />
+    <None Include="Data\76.dat" />
+    <None Include="Data\77.dat" />
+    <None Include="Data\78.dat" />
+    <None Include="Data\79.dat" />
+    <None Include="Data\8.dat" />
+    <None Include="Data\80.dat" />
+    <None Include="Data\81.dat" />
+    <None Include="Data\82.dat" />
+    <None Include="Data\83.dat" />
+    <None Include="Data\84.dat" />
+    <None Include="Data\85.dat" />
+    <None Include="Data\86.dat" />
+    <None Include="Data\87.dat" />
+    <None Include="Data\88.dat" />
+    <None Include="Data\89.dat" />
+    <None Include="Data\9.dat" />
+    <None Include="Data\90.dat" />
+    <None Include="Data\91.dat" />
+    <None Include="Data\92.dat" />
+    <None Include="Data\93.dat" />
+    <None Include="Data\94.dat" />
+    <None Include="Data\95.dat" />
+    <None Include="Data\96.dat" />
+    <None Include="Data\97.dat" />
+    <None Include="Data\98.dat" />
+    <None Include="Data\99.dat" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="32.ico" />
+    <Content Include="lib\AForge.Controls.dll" />
+    <Content Include="lib\AForge.dll" />
+    <Content Include="lib\AForge.Imaging.dll" />
+    <Content Include="lib\AForge.Imaging.Formats.dll" />
+    <Content Include="lib\AForge.Math.dll" />
+    <Content Include="lib\AForge.Video.DirectShow.dll" />
+    <Content Include="lib\AForge.Video.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.props'))" />
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.targets'))" />
+  </Target>
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.targets" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" />
+</Project>

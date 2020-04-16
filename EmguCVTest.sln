@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmguCVTest", "EmguCVTest\EmguCVTest.csproj", "{AECFD55A-8FFD-4368-8198-5C53087A1CDB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupDeBug", "SetupDeBug\SetupDeBug.vdproj", "{B2406C16-E07C-407C-B06C-3063CBCD5603}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Debug|x64.ActiveCfg = Debug|x64
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Debug|x64.Build.0 = Debug|x64
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Release|x64.ActiveCfg = Release|x64
+		{AECFD55A-8FFD-4368-8198-5C53087A1CDB}.Release|x64.Build.0 = Release|x64
+		{B2406C16-E07C-407C-B06C-3063CBCD5603}.Debug|Any CPU.ActiveCfg = Debug
+		{B2406C16-E07C-407C-B06C-3063CBCD5603}.Debug|x64.ActiveCfg = Debug
+		{B2406C16-E07C-407C-B06C-3063CBCD5603}.Release|Any CPU.ActiveCfg = Release
+		{B2406C16-E07C-407C-B06C-3063CBCD5603}.Release|x64.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7374D617-CA7D-4B04-B7BA-B0C2A78117C4}
+	EndGlobalSection
+EndGlobal
